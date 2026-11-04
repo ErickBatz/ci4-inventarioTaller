@@ -6,7 +6,9 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 // Recursos REST agrupados bajo /api. Agrega aquí los nuevos modelos y controladores.
-$routes->group('api', static function ($routes) {
+$routes->group('api', ['filter' => 'cors'], static function ($routes) {
+    $routes->options('(:any)', static function () {});
+
     $options = ['only' => ['index', 'show', 'create', 'update', 'delete'], 'placeholder' => '(:num)'];
 
     $routes->resource('usuarios', ['controller' => 'UsuarioController'] + $options);
