@@ -27,4 +27,6 @@ $routes->group('api', ['filter' => 'cors'], static function ($routes) {
     $routes->resource('roles', ['controller' => 'RolesController'] + $options);
     $routes->resource('vehiculos', ['controller' => 'VehiculoController'] + $options);
     $routes->resource('ventas', ['controller' => 'VentasController'] + $options);
+
+    $routes->post('login', 'AuthController::login');
 });
